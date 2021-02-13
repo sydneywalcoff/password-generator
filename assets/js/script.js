@@ -1,12 +1,19 @@
 // Assignment code here
 var generatePassword = function() {
   var accepted = [];
-  
+  var password = [];
   // password length
-  var passwordLength = prompt("How many characters do you want your password to contain?");
-  if(passwordLength < 8 || passwordLength > 128) {
-    alert("Please enter a number between 8 and 128");
+  
+  var getPasswordLength = function() {
+    var length = prompt("How many characters do you want your password to contain?");
+    if(length < 8 || length > 128) {
+      alert("Please enter a number between 8 and 128");
+      return getPasswordLength();
+    }
+    return length;
   }
+
+  length = getPasswordLength();
 
   // lowercase
   var lowercase = confirm("Would you like to include lowercase letters?");
@@ -37,9 +44,16 @@ var generatePassword = function() {
   var specialChars = '!@#$%^&*()+-';
   specialChars = specialChars.split('');
   if(special) {
-    accepted.push.apply(accepted, specialChars);;
+    accepted.push.apply(accepted, specialChars);
   }
-  
+
+  for(let i=0; i < length; i++) {
+    randomNum = Math.floor(Math.random() * accepted.length);
+    randomDigit = accepted[randomNum];
+    password.push(randomDigit);
+  }
+  password = password.join("");
+  return password;
 }
 
 // Get references to the #generate element
