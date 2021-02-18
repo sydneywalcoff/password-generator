@@ -32,10 +32,10 @@ var generatePassword = function() {
   }
 
   // numeric
-  var numbers = confirm("Would you like to include numbers?");
+  var number = confirm("Would you like to include numbers?");
   var numberChars = '0123456789';
   numberChars = numberChars.split('');
-  if(numbers) {
+  if(number) {
     accepted.push.apply(accepted, numberChars);
   }
 
@@ -47,7 +47,7 @@ var generatePassword = function() {
     accepted.push.apply(accepted, specialChars);
   }
 
-  if(!special && !numbers && !uppercase && !lowercase) {
+  if(!special && !number && !uppercase && !lowercase) {
     alert("Please select at least one type of value for your password.");
     return criteria();
   }
@@ -101,7 +101,7 @@ var generatePassword = function() {
       }
     }
 
-    if(numbers) {
+    if(number) {
       // nested for loop to cycle through each item in the arrays to look for matches
       for (let i=0; i < length; i++) {
         matchFound = false;
