@@ -28,41 +28,13 @@ var generatePassword = function() {
     // lowercase
     lowercaseChars = lowercaseChars.split('');
     if(lowercase) {
-      // nested for loop to cycle through each item in the arrays to look for matches
-      for (let i=0; i < length; i++) {
-        matchFound = false;
-
-        for (let j=0; j < lowercaseChars.length; j++) {
-          if(password[i] == lowercaseChars[j]) {
-            matchFound = true;
-            break;
-          }
-        }
-        if(!matchFound) {
-          createPassword();
-        }
-      }
+      accepted.push.apply(accepted, lowercaseChars);
     }
 
     // uppercase
     uppercaseChars = uppercaseChars.split('');
     if(uppercase) {
-      // nested for loop to cycle through each item in the arrays to look for matches
-      for (let i=0; i < length; i++) {
-        matchFound = false;
-
-        for (let j=0; j < uppercaseChars.length; j++) {
-          if(password[i] == uppercaseChars[j]) {
-            matchFound = true;
-            break;
-          }
-        }
-        return matchFound;
-        
-      }
-      if(!matchFound) {
-        createPassword();
-      }
+      accepted.push.apply(accepted, uppercaseChars);
     }
 
     // numeric
@@ -75,9 +47,8 @@ var generatePassword = function() {
     // special characters
     specialChars = specialChars.split('');
     if(special) {
-      // nested for loop to cycle through each item in the arrays to look for matches
-      for (let i=0; i < length; i++) {
-        matchFound = false;
+      accepted.push.apply(accepted, specialChars);
+    }
 
     if(!special && !number && !uppercase && !lowercase) {
       alert("Please select at least one type of value for your password.");
