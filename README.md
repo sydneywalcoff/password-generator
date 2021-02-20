@@ -7,7 +7,7 @@ A random password generator where you can decide password length and character u
 https://sydneywalcoff.github.io/password-generator
 
 ## Screenshot
-![alt_image][./assets/password-generator]
+![alt_image][./assets/password-generator.png]
 
 ## Contribution
 Made with 💕 by Sydney Walcoff
